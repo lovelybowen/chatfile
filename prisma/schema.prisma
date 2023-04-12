@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Docment {
+  id              Int      @id @default(autoincrement())
+  name            String   @db.VarChar(255)
+  mimetype        String   @db.VarChar(32)
+  size            Int
+  encoding        String   @db.VarChar(16)
+  source          SOURCE   @default(UPLOAD)
+  pageNumber      Int
+  vectorNamespace String?   @db.VarChar(255)
+  ossUrl          String?  @db.VarChar(255)
+  Chat            Chat?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now())
+}
+
+model Chat {
+  id        Int       @id @default(autoincrement())
+  topic     String    @db.VarChar(255)
+  summary   String    @db.VarChar(1024)
+  docment   Docment   @relation(fields: [docmentId], references: [id])
+  docmentId Int       @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  Message   Message[]
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  chat      Chat     @relation(fields: [chatId], references: [id])
+  chatId    Int
+  author    String   @db.VarChar(64)
+  msg       String?   @db.VarChar(2048)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+enum SOURCE {
+  UPLOAD
+  URL
+}
