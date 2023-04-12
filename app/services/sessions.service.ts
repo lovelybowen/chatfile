@@ -22,10 +22,10 @@ export class SessionsService {
     const vectorStore = await PineconeStore.fromExistingIndex(
       new OpenAIEmbeddings(
         {
-          openAIApiKey: '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',
+          openAIApiKey: '',
         },
         {
-          basePath: 'https://chatpdf.bowenhuang.xyz/v1',
+          basePath: 'https://xxxx',
         },
       ),
       {
@@ -76,10 +76,10 @@ export class SessionsService {
       /*create and store the embeddings in the vectorStore*/
       const embeddings = new OpenAIEmbeddings(
         {
-          openAIApiKey: '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',
+          openAIApiKey: '',
         },
         {
-          basePath: 'https://chatpdf.bowenhuang.xyz/v1',
+          basePath: 'https://xxxx',
         },
       )
 
