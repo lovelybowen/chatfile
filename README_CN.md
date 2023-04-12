@@ -1,18 +1,15 @@
-## koa-ts
+## chatfile
 
-使用 TypeScript 构建 Koa2 项目的最佳实践.
+个人AI知识库.
 
 <br>
 
 ### 快速开始
 
-1. 在终端输入: `npm init koa-ts` 初始化项目模板
+1. 安装依赖: `yarn`
 
-2. 安装依赖: `yarn`
+2. 重命名 `.env.example` 为 `.env`，随后运行 `prisma db push` 迁移数据库模型
 
-3. 重命名 `.env.example` 为 `.env`，随后运行 `prisma db push` 迁移数据库模型
-
-4. 运行服务：`yarn dev`，访问 http://127.0.0.1:3000/apis/sessions
 
 &nbsp;&nbsp;**(可选)** 项目为开发环境内置 compose，运行 `yarn dev:db` 启动 (如果您已有 docker)
 
